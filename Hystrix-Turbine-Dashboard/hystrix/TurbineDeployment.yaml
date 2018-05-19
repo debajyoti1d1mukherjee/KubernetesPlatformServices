@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: Deployment           
+metadata:
+  name: hystrix-dashboard                          
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: hystrix-dashboard                      
+    spec:
+      containers:                       
+      - name: hystrix-dashboard                     
+        image: debajyotim/hystrix-dashboard             
+        ports:
+        - containerPort: 8090           
+        env:
+        - name: EUREKA_URL
+          #value: "http://eureka:admin@eureka-server:8761/eureka"
+          value: "http://173.193.75.122:30573/eureka"
